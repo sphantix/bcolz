@@ -70,7 +70,7 @@ def detect_number_of_cores():
             if isinstance(ncpus, int) and ncpus > 0:
                 return ncpus
         else:  # OSX:
-            return int(os.popen2("sysctl -n hw.ncpu")[1].read())
+            return int(os.popen("sysctl -n hw.ncpu")[1].read())
     # Windows:
     if "NUMBER_OF_PROCESSORS" in os.environ:
         ncpus = int(os.environ["NUMBER_OF_PROCESSORS"])
@@ -211,7 +211,7 @@ def fromiter(iterable, dtype, count, **kwargs):
     return obj
 
 
-def fill(shape, dflt=None, dtype=np.float, **kwargs):
+def fill(shape, dflt=None, dtype=np.float64, **kwargs):
     """fill(shape, dtype=float, dflt=None, **kwargs)
 
     Return a new carray or ctable object of given shape and type, filled with
@@ -293,7 +293,7 @@ def fill(shape, dflt=None, dtype=np.float, **kwargs):
     return obj
 
 
-def zeros(shape, dtype=np.float, **kwargs):
+def zeros(shape, dtype=np.float64, **kwargs):
     """
     zeros(shape, dtype=float, **kwargs)
 
@@ -324,7 +324,7 @@ def zeros(shape, dtype=np.float, **kwargs):
                 **kwargs)
 
 
-def ones(shape, dtype=np.float, **kwargs):
+def ones(shape, dtype=np.float64, **kwargs):
     """
     ones(shape, dtype=float, **kwargs)
 

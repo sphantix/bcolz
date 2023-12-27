@@ -1,3 +1,4 @@
+#cython: language_level=3
 from numpy cimport ndarray, dtype, npy_intp
 
 cdef class chunk:
@@ -56,4 +57,3 @@ cdef class carray:
     cdef reset_iter_sentinels(self)
     cdef int check_zeros(self, object barr)
     cdef _adapt_dtype(self, dtype_, shape)
-

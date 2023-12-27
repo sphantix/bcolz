@@ -192,12 +192,17 @@ for binary data.
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11'
     ],
-    author='Francesc Alted',
-    author_email='francesc@blosc.org',
-    maintainer='Francesc Alted',
-    maintainer_email='francesc@blosc.org',
-    url='https://github.com/Blosc/bcolz',
+    author='sphantix',
+    author_email='sphantix@gmail.com',
+    maintainer='Sphantix Hang',
+    maintainer_email='sphantix@gmail.com',
+    url='https://github.com/sphantix/bcolz',
     license='BSD',
     platforms=['any'],
     ext_modules=[
@@ -212,20 +217,20 @@ for binary data.
             extra_compile_args=CFLAGS
         )
     ],
-    install_requires=['numpy>=1.7'],
+    install_requires=['numpy>=1.26.2'],
     setup_requires=[
-        'cython>=0.22',
-        'numpy>=1.7',
-        'setuptools>18.0',
-        'setuptools-scm>1.5.4'
+        'cython>=3.0.7',
+        'numpy>=1.26.2',
+        'setuptools>=69.0.3',
+        'setuptools-scm>=8.0.4'
     ],
     tests_require=tests_require,
     extras_require=dict(
         optional=[
-            'numexpr>=2.5.2',
-            'dask>=0.9.0',
-            'pandas',
-            'tables'
+            'numexpr>=2.8.8',
+            'dask>=2023.12.1',
+            'pandas>=2.1.4',
+            'tables>=3.9.2'
         ],
         test=tests_require
     ),

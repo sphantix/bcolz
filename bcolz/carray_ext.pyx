@@ -1,6 +1,7 @@
 #!python
 #cython: embedsignature=True
 #cython: linetrace=True
+#cython: language_level=3
 #########################################################################
 #
 #       License: BSD
@@ -354,11 +355,11 @@ cdef class chunk:
         dtype_ = atom.base
         self.typekind = dtype_.kind
         # Hack for allowing strings with len > BLOSC_MAX_TYPESIZE
-        if self.typekind == 'S':
+        if self.typekind == b'S':
             itemsize = 1
-        elif self.typekind == 'U':
+        elif self.typekind == b'U':
             itemsize = 4
-        elif self.typekind == 'V' and dtype_.itemsize > BLOSC_MAX_TYPESIZE:
+        elif self.typekind == b'V' and dtype_.itemsize > BLOSC_MAX_TYPESIZE:
             itemsize = 1
         else:
             itemsize = dtype_.itemsize
@@ -426,7 +427,7 @@ cdef class chunk:
             if blocksize == 0:
                 blocksize = itemsize
         else:
-            if self.typekind == 'b':
+            if self.typekind == b'b':
                 self.true_count = true_count(array.data, nbytes)
 
             if array.strides[0] == 0:
@@ -1682,7 +1683,7 @@ cdef class carray:
                        expectedlen=newlen,
                        rootdir=rootdir, mode='w')
         if newlen < ilen:
-            rsize = isize / newlen
+            rsize = int(isize / newlen)
             for i from 0 <= i < newlen:
                 out.append(
                     self[i * rsize:(i + 1) * rsize].reshape(newdtype.shape))
