@@ -1653,7 +1653,7 @@ cdef class carray:
             if isize == 0:
                 newshape = newshape[:pos] + (0,) + newshape[pos + 1:]
             else:
-                newshape = newshape[:pos] + (isize / osize,) + newshape[
+                newshape = newshape[:pos] + (int(isize / osize),) + newshape[
                                                                pos + 1:]
             newsize = np.prod(newshape)
 

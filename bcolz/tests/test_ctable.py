@@ -126,7 +126,7 @@ class createTest(MayBeDiskTest):
         """Test create empty ctable and assing names to their columns"""
         N = 0
         dtype = np.dtype(
-            [('Alice', np.int16), ('Bob', np.int8), ('Charlie', np.float)])
+            [('Alice', np.int16), ('Bob', np.int8), ('Charlie', np.float64)])
         ra = np.zeros(N, dtype=dtype)
         ct = bcolz.zeros(N, dtype=dtype, rootdir=self.rootdir)
         self.assertEquals(ct.names, ['Alice', 'Bob', 'Charlie'])
@@ -163,7 +163,7 @@ class createTest(MayBeDiskTest):
         """Test create ctable full of zeros and assign names to their columns"""
         N = 10000
         dtype = np.dtype(
-            [('Alice', np.int16), ('Bob', np.int8), ('Charlie', np.float)])
+            [('Alice', np.int16), ('Bob', np.int8), ('Charlie', np.float64)])
         ra = np.zeros(N, dtype=dtype)
         ct = bcolz.zeros(N, dtype=dtype, rootdir=self.rootdir)
         self.assertEquals(ct.names, ['Alice', 'Bob', 'Charlie'])
@@ -883,9 +883,9 @@ class appendTest(MayBeDiskTest):
         assert_array_equal(t[:], ra, "ctable values are not correct")
 
     def test06(self):
-        """Extracting rows from table with np.object column"""
+        """Extracting rows from table with object column"""
         N = 4
-        dtype = np.dtype([("a", np.object), ("b", np.uint8), ("c", np.int32),
+        dtype = np.dtype([("a", object), ("b", np.uint8), ("c", np.int32),
             ("d", np.float32) ])
         with bcolz.ctable(np.empty(0, dtype=dtype), rootdir=self.rootdir) as t:
             for i in xrange(N):
@@ -921,7 +921,7 @@ class trimTest(MayBeDiskTest):
         ra = np.fromiter(((i, i * 2.) for i in xrange(N - 200)), dtype='i4,f8')
         t = bcolz.fromiter(((i, i * 2.) for i in xrange(N)), 'i4,f8', N,
                            rootdir=self.rootdir)
-        t.trim(np.int(200))
+        t.trim(int(200))
         assert_array_equal(t[:], ra, "ctable values are not correct")
 
     def test02(self):

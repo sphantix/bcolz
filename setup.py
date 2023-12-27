@@ -27,6 +27,8 @@ try:
     # Currently just Intel and some ARM archs are supported by cpuinfo module
     import cpuinfo
     cpu_info = cpuinfo.get_cpu_info()
+    if "flags" not in cpu_info:
+        cpu_info["flags"] = []
 except:
     cpu_info = {'flags': []}
 
