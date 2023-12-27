@@ -1,21 +1,8 @@
 ===========================
-Unmaintained Package Notice
+Maintain Notice
 ===========================
 
-Unfortunately, and due to lack of resources, the Blosc Development Team is unable to maintain this package anymore.
-During the last 10 years we managed to find resources (even if in a quite irregular way) to develop what we think is a
-nice package for handling compressed data containers, especially tabular data.  Regrettably, for the last years we did
-not found sponsorship enough to continue the maintenance of this package.
-
-For those that depend on bcolz, a fork is welcome and we will try our best to provide advice for possible new
-maintainers.  Indeed, if we manage to get some decent grants via Blosc (https://blosc.org/pages/donate/), our umbrella
-project, we would be glad to reconsider the maintenance of bcolz.  But again, we would be very open and supportive
-for this project to get a new maintenance team.
-
-Finally, thanks to all the people that used and contributed in one way or another to bcolz; it has been a nice ride!
-Let's hope it still would have a bright future ahead.
-
-The Blosc Development Team
+I just maintain this fork for my own use. I'll try my best to keep it up to date, but I can't guarantee it.
 
 bcolz: columnar and compressed data containers
 ==============================================
@@ -114,16 +101,16 @@ Requisites
 ----------
 
 - Python >= 2.7 and >= 3.5
-- NumPy >= 1.8
-- Cython >= 0.22 (just for compiling the beast)
+- NumPy >= 1.26.2
+- Cython >= 3.0.7
 - C-Blosc >= 1.8.0 (optional, as the internal Blosc will be used by default)
 
 Optional:
 
-- numexpr >= 2.5.2
-- dask >= 0.9.0
-- pandas
-- tables (pytables)
+- numexpr >= 2.8.8
+- dask >= 2023.12.1
+- pandas >= 2.1.4
+- tables (pytables) >= 3.9.2
 
 Building
 --------
